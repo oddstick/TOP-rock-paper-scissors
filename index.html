@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock, Paper, Scissors!</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // QUESTION: ARE THESE NECESSARY?? 
+    // asking because "console.log(playRound(playerSelection, computerSelection));" 
+    // wont' work without them at the moment  
+    // let computerSelection;
+    // let playerSelection;
+
+    // computerPlay will randomly return either "Rock", "Paper", or "Scissors"
+    function computerPlay() {
+
+        const computerSelection = (Math.floor(Math.random() * 8));
+
+        if ((Math.floor(Math.random() * 8) <= 2)) {
+            return "Rock";
+        }
+        else if ((Math.floor(Math.random() * 8) <= 5)) {
+            return "Paper";
+
+        }
+        else ((Math.floor(Math.random() * 8) <= 8)); {
+            return "Scissors";
+        }
+    }
+
+
+    //(playerSelection takes user input, accepting only "Rock," "Paper," or "Scissors"
+    // otherwise, it will again prompt the user to input a viable response
+    function playerPlay() {
+
+        const playerSelection = prompt("Rock, Paper, or Scissors?");
+
+        if (playerSelection.toLowerCase() == "rock") {
+            return "Rock"
+        }
+        else if (playerSelection.toLowerCase() == "paper") {
+            return "Paper"
+        }
+
+        else if (playerSelection.toLowerCase() == "scissors") {
+            return "Scissors";
+        }
+        //handle errors later, and probably not like this
+        // else {
+        //     prompt("Error: Please choose Rock, Paper, or Scissors.");
+        // }
+
+    }
+
+    // playRound plays a single round of Rock, Paper, Scissors
+    function playRound(playerSelection, computerSelection) {
+        
+        playerPlay();
+        computerPlay();
+
+        // Rock scenarios
+        if (playerSelection == "Rock" && computerSelection == "Rock") {
+            return "Nobody wins! This round was a tie!"
+        }
+        else if (playerSelection == "Rock" && computerSelection == "Paper") {
+
+            return "You lose! Paper beats Rock."
+        }
+        else if (playerSelection == "Rock" && computerSelection == "Scissors") {
+
+            return "You win! Rock beats Scissors."
+        }
+        // Paper scenarios
+        else if (playerSelection == "Paper" && computerSelection == "Rock") {
+
+            return "You win! Paper beats Rock."
+        }
+
+        else if (playerSelection == "Paper" && computerSelection == "Paper") {
+
+            return "Nobody wins! This round was a tie!"
+        }
+
+        else if (playerSelection == "Paper" && computerSelection == "Scissors") {
+
+            return "You lose! Scissors beats Paper."
+
+        }
+        // Scissors scenarios
+        else if (playerSelection == "Scissors" && computerSelection == "Rock") {
+
+            return "You lose! Rock beats Scissors."
+
+        }
+
+        else if (playerSelection == "Scissors" && computerSelection == "Paper") {
+
+            return "You win! Scissors beats paper."
+
+        }
+
+        else if (playerSelection == "Scissors" && computerSelection == "Scissors") {
+
+            return "Nobody wins! This round was a tie!"
+        }
+    }
+
+    // display results of one round to the console
+    // const playerSelection = playerPlay();
+    // console.log(playerSelection);
+    // const computerSelection = computerPlay();
+    // console.log(computerSelection);
+    // console.log(playRound(playerSelection, computerSelection));
+
+    function game() {
+        for (let i = 0; i < 5; i++) {
+       
+        playRound();
+
+        // figure out how a win is tallied
+        // figure out how to keep score
+        // declare who wins/loses at end
+
+        }
+    }
+    
+</script>
+
+</html>
