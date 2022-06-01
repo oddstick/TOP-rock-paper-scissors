@@ -6,193 +6,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock, Paper, Scissors!</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Averia+Sans+Libre&family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
+    <div class="content">
+        <h1 class="header">Let's Play <br> Rock, Paper, Scissors!</h1>
+
+        <div class="hook">
+            <h2>Make your choice</h2>
+        </div>
+
+        <div class="buttons" id="btns">
+            <div class="button">
+                <button id="rockBtn" data-choice="Rock">Rock</button>
+            </div>
+
+            <div class="button">
+                <button id="paperBtn" data-choice="Paper">Paper</button>
+            </div>
+
+            <div class="button">
+                <button id="scissorsBtn" data-choice="Scissors">Scissors</button>
+            </div>
+
+        </div>
+
+        <h2 class="round-update" id="player-vs-comp"></h2>
+
+        <div class="scores">
+            <div class="score">
+                <p id="player-score">Player Score: 0</p>
+            </div>
+
+            <div class="score">
+                <p id="computer-score">Computer Score: 0</p>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
 </body>
 
-<script>
-    // QUESTION: ARE THESE NECESSARY?? 
-    // unsure about using global variables, but so far, won't work properly without them
-    let computerSelection;
-    let playerSelection;
-    let computerPoint = 0;
-    let playerPoint = 0;
-
-    // computerPlay will randomly return either "Rock", "Paper", or "Scissors"
-    function computerPlay() {
-
-        const computerSelection = (Math.floor(Math.random() * 8));
-
-        if (computerSelection <= 2) {
-            return "Rock"
-        }
-        else if (computerSelection <= 5) {
-            return "Paper"
-
-        }
-        else (computerSelection <= 8); {
-            return "Scissors";
-        }
-    }
-
-
-    //(playerSelection takes user input, accepting only "Rock," "Paper," or "Scissors"
-    // otherwise, it will again prompt the user to input a viable response
-    function playerPlay() {
-
-        const playerSelection = prompt("Rock, Paper, or Scissors?");
-
-        if (playerSelection.toLowerCase() == "rock") {
-            return "Rock"
-        }
-        else if (playerSelection.toLowerCase() == "paper") {
-            return "Paper"
-        }
-
-        else if (playerSelection.toLowerCase() == "scissors") {
-            return "Scissors"
-        }
-        // handle errors  
-        else {
-            alert("Error: Please choose Rock, Paper, or Scissors.")
-            playerPlay();
-        }
-
-    }
-
-    // playRound plays a single round of Rock, Paper, Scissors
-    function playRound(playerSelection, computerSelection) {
-
-
-        playerSelection = playerPlay();
-        console.log(playerSelection);
-        computerSelection = computerPlay();
-        console.log(computerSelection);
-        determineRoundWinner();
-
-        function determineRoundWinner() {
-
-            // 2/28/22 15:25 PROBLEMS:
-            //This is not working right--computer runs through the if/else statements
-            //but does not seem to recognize playerSelection and computerSelection values
-            //even though they match correctly in debugger and console.log()
-            //is it because they're const ?? even though the value changes to be correct 
-            //in debugger/console after running through the playerPlay() and computerPlay() functions??
-
-            // 2/28/22 15:40 HOWEVER, it does kind of work when nested within playRound()
-            // Is it okay to do this???
-
-            // Rock scenarios
-            if (playerSelection == "Rock" && computerSelection == "Rock") {
-                //return "Nobody wins! This round was a tie!"
-                nobodyWinsRound(); // <-- can this even work??????? I don't think so.
-            }
-            else if (playerSelection == "Rock" && computerSelection == "Paper") {
-
-                //return "You lose! Paper beats Rock."
-                computerWinsRound();
-            }
-            else if (playerSelection == "Rock" && computerSelection == "Scissors") {
-
-                //return "You win! Rock beats Scissors."
-                playerWinsRound();
-            }
-            // Paper scenarios
-            else if (playerSelection == "Paper" && computerSelection == "Rock") {
-
-                //return "You win! Paper beats Rock."
-                playerWinsRound();
-            }
-
-            else if (playerSelection == "Paper" && computerSelection == "Paper") {
-
-                //return "Nobody wins! This round was a tie!"
-                nobodyWinsRound();
-            }
-
-            else if (playerSelection == "Paper" && computerSelection == "Scissors") {
-
-                //return "You lose! Scissors beats Paper."
-                computerWinsRound();
-            }
-            // Scissors scenarios
-            else if (playerSelection == "Scissors" && computerSelection == "Rock") {
-
-                //return "You lose! Rock beats Scissors."
-                computerWinsRound();
-            }
-
-            else if (playerSelection == "Scissors" && computerSelection == "Paper") {
-
-                //return "You win! Scissors beats paper."
-                playerWinsRound();
-
-            }
-
-            else if (playerSelection == "Scissors" && computerSelection == "Scissors") {
-
-                //return "Nobody wins! This round was a tie!"
-                nobodyWinsRound();
-            }
-        }
-
-    }
-
-
-
-    function playerWinsRound() {
-        //console.log("You win! " + playerSelection + " beats " + computerSelection + ".");
-        console.log("You win!")
-        playerPoint++;
-        console.log("Current score: Player: " + playerPoint + " Computer: " + computerPoint);
-    }
-
-    function computerWinsRound() {
-       // console.log("You lose! " + computerSelection + " beats " + playerSelection + ".");
-        console.log("You lose...")
-        computerPoint++;
-        console.log("Current score: Player: " + playerPoint + " Computer: " + computerPoint);
-    }
-
-    function nobodyWinsRound() {
-        console.log("Nobody wins! This round was a tie! No points awarded.");
-        console.log("Current score: Player: " + playerPoint + " Computer: " + computerPoint);
-    }
-
-    function declareWinner() {
-   
-        if (playerPoint > computerPoint) {
-            //return 
-            console.log("You won this game!")
-        }
-
-        else if (playerPoint < computerPoint) {
-            //return 
-            console.log("You lost. The computer won this game!")
-        }
-
-        else if (playerPoint == computerPoint) {
-            //return 
-            console.log("This game resulted in a draw!")
-        }
-    }
-
-
-    function game() {
-
-        for (let i = 0; i < 5; i++) {
-
-            playRound();
-        }
-
-        declareWinner();
-    }
-
-    // Play a game ??
-    // game();   
-
-</script>
+<script src="app.js"></script>
 
 </html>

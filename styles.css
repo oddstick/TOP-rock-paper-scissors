@@ -1,0 +1,57 @@
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hook {
+    font-family: 'Averia Sans Libre', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    padding-bottom: 2rem;
+}
+
+.buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+button {
+    background-color: lightcoral;
+    border: 2px solid darkred;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-align: center;
+    font-family:'Averia Sans Libre', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 1.5rem;
+    transition-duration: 0.4s;
+}
+
+
+button:hover {
+    background-color: lightgreen;
+    border: 2px solid darkgreen;
+}
+
+.header {
+    font-family: 'Press Start 2P', cursive;
+    color: red;
+    text-align: center;
+    line-height: 3rem;
+}
+
+.round-update {
+    padding-top: 2rem;
+    font-family: 'Averia Sans Libre', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+.scores {
+    display: flex;
+    gap: 3rem;
+    font-family: 'Averia Sans Libre', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
